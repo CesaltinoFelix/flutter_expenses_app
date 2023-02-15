@@ -20,6 +20,8 @@ class ExpensesApp extends StatelessWidget {
 
 class MyHomePage extends StatelessWidget {
   MyHomePage({super.key});
+  final titleController = TextEditingController();
+  final valueController = TextEditingController();
   final _transactions = [
     Transaction(
         id: 't1',
@@ -34,7 +36,6 @@ class MyHomePage extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(title: Text('Despesas Pessoais')),
       body: Column(
-        mainAxisAlignment: MainAxisAlignment.spaceAround,
         crossAxisAlignment: CrossAxisAlignment.stretch,
         children: [
           Container(
@@ -83,7 +84,37 @@ class MyHomePage extends StatelessWidget {
               ),
               elevation: 5,
             );
-          }).toList())
+          }).toList()),
+          Card(
+            elevation: 5,
+            child: Padding(
+              padding: EdgeInsets.all(10),
+              child: Column(
+                children: [
+                  TextField(
+                    decoration: InputDecoration(labelText: 'Titulo'),
+                    controller: titleController,
+                  ),
+                  TextField(
+                    decoration: InputDecoration(
+                      labelText: 'Valor (Kz)',
+                    ),
+                    controller: valueController,
+                  ),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.end,
+                    children: [
+                      MaterialButton(
+                        onPressed: () {},
+                        child: Text('Nova Transacao'),
+                        textColor: Colors.purple,
+                      ),
+                    ],
+                  )
+                ],
+              ),
+            ),
+          )
         ],
       ),
     );
